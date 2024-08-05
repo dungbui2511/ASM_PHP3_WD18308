@@ -11,7 +11,7 @@
         @foreach($posts as $post)
         <article class="card mb-4">
           <div class="post-slider">
-            <img src="{{asset('images/post/'.$post->image)}}" class="card-img-top" alt="post-thumb">
+            <img src="{{asset('uploads/'.$post->image)}}" class="card-img-top" alt="post-thumb">
           </div>
           <div class="card-body">
             <h3 class="mb-3"><a class="post-title" href="{{route('post.show', ['id' => $post->id]) }}">{{$post->title}}</a></h3>

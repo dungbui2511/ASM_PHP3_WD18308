@@ -13,7 +13,7 @@
         @foreach($postByCate as $cate)
         <article class="card mb-4">
           <div class="post-slider">
-            <img src="{{asset('images/post/'.$cate->image)}}" class="card-img-top" alt="post-thumb">
+            <img src="{{asset('uploads/'.$cate->image)}}" class="card-img-top" alt="post-thumb">
           </div>
           <div class="card-body">
             <h3 class="mb-3"><a class="post-title" href="{{route('post.show', ['id' => $cate->id]) }}">{{$cate->title}}</a></h3>

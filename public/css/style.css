@@ -1470,4 +1470,17 @@ mark {
 .shadow-none {
   box-shadow: none !important;
 }
+.login-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  text-decoration: none;
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+.login-link:hover {
+  background-color: #4CAF50;
+}
 /*# sourceMappingURL=style.css.map */

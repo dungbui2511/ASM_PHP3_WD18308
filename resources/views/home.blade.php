@@ -11,16 +11,13 @@
         @if(isset($randomPost))
         <article class="card">
             <div class="post-slider slider-sm">
-                <img src="images/post/{{$randomPost->image}}" class="card-img-top" alt="post-thumb">
+                <img src="uploads/{{$randomPost->image}}" class="card-img-top" alt="post-thumb">
             </div>
             <div class="card-body">
             <h3 class="h4 mb-3"><a class="post-title" href="{{route('post.show', ['id' => $randomPost->id]) }}">{{ $randomPost->title }}</a></h3>
                 <ul class="card-meta list-inline">
-                    <!-- <li class="list-inline-item">
-                        <i class="ti-timer"></i>{{ $randomPost->read_time }} Min To Read
-                    </li> -->
                     <li class="list-inline-item">
-                        <i class="ti-calendar"></i>{{ $randomPost->created_at->format('d M, Y') }}
+                        <i class="ti-calendar"></i>{{$randomPost->created_at->format('d M, Y')}}
                     </li>
                     <li class="list-inline-item">
                         <ul class="card-meta-tag list-inline">
@@ -30,7 +27,7 @@
                         </ul>
                     </li>
                 </ul>
-                <a href="" class="btn btn-outline-primary">Read More</a>
+                <a href="{{ route('post.show', ['id' => $randomPost->id]) }}" class="btn btn-outline-primary">Read More</a>
             </div>
         </article>
         @endif
@@ -40,7 +37,7 @@
         @foreach($trendingPosts as $post)
         <article class="card mb-4">
             <div class="card-body d-flex">
-                <img class="card-img-sm" src="images/post/{{ $post->image }}" alt="Post Image">
+                <img class="card-img-sm" src="uploads/{{$post->image}}" alt="Post Image">
                 <div class="ml-3">
                     <h4><a href="{{ route('post.show', ['id' => $post->id]) }}" class="post-title">{{ $post->title }}</a></h4>
                     <ul class="card-meta list-inline mb-0">
@@ -68,7 +65,7 @@
         @if($popularPost)
     <article class="card">
         <div class="post-slider slider-sm">
-            <img src="images/post/{{ $popularPost->image }}" class="card-img-top" alt="{{ $popularPost->title }}">
+            <img src="uploads/{{ $popularPost->image }}" class="card-img-top" alt="{{ $popularPost->title }}">
         </div>
         <div class="card-body">
             <h3 class="h4 mb-3">
@@ -88,7 +85,7 @@
                     </ul>
                 </li>
             </ul>
-            <a href="" class="btn btn-outline-primary">Read More</a>
+            <a href="{{ route('post.show', ['id' => $popularPost->id]) }}" class="btn btn-outline-primary">Read More</a>
         </div>
     </article>
 @endif
@@ -139,7 +136,7 @@
     @foreach($posts as $post)
     <article class="card mb-4">
   <div class="post-slider">
-      <img src="images/post/{{$post->image}}" class="card-img-top" alt="post-thumb">
+      <img src="uploads/{{$post->image}}" class="card-img-top" alt="post-thumb">
   </div>
   <div class="card-body">
       <h3 class="mb-3"><a class="post-title" href="{{ route('post.show', ['id' => $post->id]) }}">{{$post->title}}</a></h3>

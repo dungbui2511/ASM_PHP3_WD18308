@@ -65,20 +65,54 @@
         </ul>
       </div>
       <div class="order-2 order-lg-3 d-flex align-items-center">
-        <select class="m-2 border-0 bg-transparent" id="select-language">
+        <!-- <select class="m-2 border-0 bg-transparent" id="select-language">
           <option id="en" value="" selected>En</option>
           <option id="fr" value="">Fr</option>
-        </select>    
+        </select>     -->
         <!-- search -->
-        <form class="search-bar">
-          <input id="search-query" name="s" type="search" placeholder="Type &amp; Hit Enter...">
-        </form>
-        
-        <button class="navbar-toggler border-0 order-1" type="button" data-toggle="collapse" data-target="#navigation">
-          <i class="ti-menu"></i>
-        </button>
+        @if(Auth::check() && Auth::user()->type == 'user')
+        <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+      {{ Auth::user()->name }}
+      </button>
+      <div class="dropdown-menu">
+      <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+         Logout
+      </a>
+      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+          @csrf
+      </form>
       </div>
-
+      </div>
+      @elseif(Auth::check() && Auth::user()->type == 'admin')
+      <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+      {{ Auth::user()->name }}
+      </button>
+      <div class="dropdown-menu">
+      <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+         Logout
+      </a>
+      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+          @csrf
+      </form>
+        <a class="dropdown-item" href="{{route('admin')}}">View admin</a>
+      </div>
+      </div>
+      @else
+      <a href="{{route('login')}}">Login</a>
+      @endif
+        <!-- @if (Auth::check() && Auth::user()->type == 'user')
+        <a href="#" class="dropdown-toggle" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{ Auth::user()->name }}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="userDropdown">
+        <a href="/logout" class="login-link dropdown-item">Logout</a>    
+        </div>
+        @else
+        <a href="/login" class="login-link">Login</a>
+        @endif -->
+      </div>
     </nav>
   </div>
 </header>
@@ -95,8 +129,6 @@
       </div>
     </div>
   </div>
-
-  
   <svg class="banner-shape-1" width="39" height="40" viewBox="0 0 39 40" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M0.965848 20.6397L0.943848 38.3906L18.6947 38.4126L18.7167 20.6617L0.965848 20.6397Z" stroke="#040306"
       stroke-miterlimit="10" />
@@ -104,7 +136,6 @@
     <path d="M20.0078 1.62949L19.9858 19.3804L37.7367 19.4024L37.7587 1.65149L20.0078 1.62949Z" stroke="#040306"
       stroke-miterlimit="10" />
   </svg>
-  
   <svg class="banner-shape-2" width="39" height="39" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g filter="url(#filter0_d)">
       <path class="path"
@@ -126,17 +157,13 @@
       </filter>
     </defs>
   </svg>
-
-  
   <svg class="banner-shape-3" width="39" height="40" viewBox="0 0 39 40" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M0.965848 20.6397L0.943848 38.3906L18.6947 38.4126L18.7167 20.6617L0.965848 20.6397Z" stroke="#040306"
       stroke-miterlimit="10" />
     <path class="path" d="M10.4966 11.1283L10.4746 28.8792L28.2255 28.9012L28.2475 11.1503L10.4966 11.1283Z" />
     <path d="M20.0078 1.62949L19.9858 19.3804L37.7367 19.4024L37.7587 1.65149L20.0078 1.62949Z" stroke="#040306"
       stroke-miterlimit="10" />
-  </svg>
-
-  
+  </svg> 
   <svg class="banner-border" height="240" viewBox="0 0 2202 240" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
       d="M1 123.043C67.2858 167.865 259.022 257.325 549.762 188.784C764.181 125.427 967.75 112.601 1200.42 169.707C1347.76 205.869 1901.91 374.562 2201 1"

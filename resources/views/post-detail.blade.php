@@ -7,7 +7,7 @@
       <div class=" col-lg-9 mb-5 mb-lg-0">
         <article>
           <div class="post-slider mb-4">
-            <img src="{{url('images/post/'.$post->image)}}" class="card-img" alt="post-thumb">
+            <img src="{{url('uploads/'.$post->image)}}" class="card-img" alt="post-thumb">
           </div>
           
           <h1 class="h2">{{$post->title}}</h1>
